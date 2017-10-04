@@ -1,6 +1,8 @@
 # Hadoop namenode exporter for Prometheus
 
-Original repository: https://github.com/wyukawa/hadoop_exporter
+![Docker Badge](https://img.shields.io/docker/build/epilet/hadoop_exporter.svg)
+
+Original repository: [wyukawa/hadoop_exporter](https://github.com/wyukawa/hadoop_exporter)
 
 Exports hadoop namenode metrics via HTTP for Prometheus consumption.
 
