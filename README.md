@@ -1,32 +1,19 @@
-# Hadoop Exporter for Prometheus
-Exports hadoop metrics via HTTP for Prometheus consumption.
+# Hadoop namenode exporter for Prometheus
 
-How to build
-```
-go get github.com/prometheus/client_golang/prometheus
-go get github.com/prometheus/log
-go build namenode_exporter.go
-go build resourcemanager_exporter.go
-```
+Original repository: https://github.com/wyukawa/hadoop_exporter
 
-Help on flags of namenode_exporter:
-```
--namenode.jmx.url string
-    Hadoop JMX URL. (default "http://localhost:50070/jmx")
--web.listen-address string
-    Address on which to expose metrics and web interface. (default ":9070")
--web.telemetry-path string
-    Path under which to expose metrics. (default "/metrics")
-```
+Exports hadoop namenode metrics via HTTP for Prometheus consumption.
 
-Help on flags of resourcemanager_exporter:
-```
--resourcemanager.url string
-    Hadoop ResourceManager URL. (default "http://localhost:8088")
--web.listen-address string
-    Address on which to expose metrics and web interface. (default ":9088")
--web.telemetry-path string
-    Path under which to expose metrics. (default "/metrics")
-```
+## Changes from the original repository
 
-Tested on HDP2.3
+ - Used glide to manage dependencies
+ - Dockerized and deployed to DockerHub for easier access
+
+## How to run
+
+```
+docker run epilet/hadoop_exporter \
+  -namenode.jmx.url http://localhost:50070/jmx
+  -web.listen-address :9070
+  -web.telemetry-path /metrics
+```
